@@ -23,6 +23,8 @@
 - [Deployment (Docker + Nginx + Ubuntu)](#-deployment-docker--nginx--ubuntu)
 - [Contributing](#-contributing)
 - [Roadmap](#-roadmap)
+- [New Project](#-new--project)
+- [Install Project](#-install--project)
 - [License](#-license)
 
 ---
@@ -57,5 +59,68 @@
 - api → service / endpoint
 - ui → layout, component, style
 
+---
+## 🚩 New Project
+- [RootProject]
+    **Install Husky v9**
+    - สร้าง package.json (ถ้าไม่มี)
+    ```
+    n   pm init -y 
+    ```
+    - ติดตั้ง dependencies
+    ```
+        npm install --save-dev husky commitlint @commitlint/config-conventional commitizen cz-conventional-changelog
+    ``` 
+    - สร้างไฟล์ commitlint.config.js ที่ root:
+    ```
+        module.exports = {
+            extends: ['@commitlint/config-conventional']
+        };
+    ```
+    - เพิ่ม config ใน package.json:
+    ```
+        "config": {
+            "commitizen": {
+                "path": "cz-conventional-changelog"
+            }
+        }
+    ```
+    - ปิดใช้งาน Husky (คำสั่งนี้จะสร้างโฟลเดอร์ .husky/ และเพิ่ม script "prepare": "husky" ให้อัตโนมัติใน package.json)
+    ```
+        npx husky init
+    ```
+    - สร้างไฟล์ .husky/commit-msg
+    ```
+        #!/bin/sh
+        . "$(dirname "$0")/_/husky.sh"
+
+        npx commitlint --edit "$1"
+    ```
+    - แล้วให้สิทธิ์รัน:
+    ```
+        chmod +x .husky/commit-msg
+    ```
+    - วิธีใช้งาน Commitizen
+    ```
+        npx cz
+    ```
+    - หรือเพิ่ม script ใน package.json:
+    ```
+        "scripts": {
+            "commit": "cz",
+            "prepare": "husky"
+        }
+    ```
+    - จากนั้นรัน: 
+    ```
+        npm run commit
+    ```
+    - รายละเอียดการ commit 👉👉[Pre-commit / Lint (Husky)](#-pre-commit--lint-husky)
+- [Angular#20]
+    - ng new <project name> (สร้าง Project Angular)
+- [.NET#8]
+    - dotnet new webapi --use-controllers -o <project name> (สร้าง Project .NET แบบมี Controllers)
+
+---
 ## 🏗️ Architecture
 
