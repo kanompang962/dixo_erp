@@ -62,22 +62,35 @@
 ---
 ## 🚩 New Project
 - [RootProject]
-    **Install Husky v9**
+    - **Install Husky v9** 
+    - ไปที่ root ของ repo (โฟลเดอร์รวม Angular + .NET)
+
+    ```
+    cd my-erp-app
+    ```
+
     - สร้าง package.json (ถ้าไม่มี)
+
     ```
-    n   pm init -y 
+    npm init -y 
     ```
+
     - ติดตั้ง dependencies
+
     ```
     npm install --save-dev husky commitlint @commitlint/config-conventional commitizen cz-conventional-changelog
     ``` 
+
     - สร้างไฟล์ commitlint.config.js ที่ root:
+
     ```
     module.exports = {
         extends: ['@commitlint/config-conventional']
     };
     ```
+
     - เพิ่ม config ใน package.json:
+
     ```
     "config": {
         "commitizen": {
@@ -85,45 +98,58 @@
         }
     }
     ```
+
     - ปิดใช้งาน Husky (คำสั่งนี้จะสร้างโฟลเดอร์ .husky/ และเพิ่ม script "prepare": "husky" ให้อัตโนมัติใน package.json)
+
     ```
     npx husky init
     ```
+
     - สร้างไฟล์ .husky/commit-msg
+
     ```
     #!/bin/sh
     . "$(dirname "$0")/_/husky.sh"
 
     npx commitlint --edit "$1"
     ```
+
     - แล้วให้สิทธิ์รัน:
+
     ```
     chmod +x .husky/commit-msg
     ```
+
     - วิธีใช้งาน Commitizen
+
     ```
     npx cz
     ```
+
     - หรือเพิ่ม script ใน package.json:
+
     ```
     "scripts": {
         "commit": "cz",
         "prepare": "husky"
     }
     ```
+
     - จากนั้นรัน: 
+
     ```
-        npm run commit
+    npm run commit
     ```
+
     - รายละเอียดการ commit 👉👉[Pre-commit / Lint (Husky)](#-pre-commit--lint-husky)
 
-- <img src="https://github.com/devicons/devicon/blob/master/icons/angular/angular-original.svg" title="Angular" alt="Angular" width="20" height="20"/> &nbsp;
+- <img src="https://github.com/devicons/devicon/blob/master/icons/angular/angular-original.svg" title="Angular" alt="Angular" width="28" height="28"/> &nbsp;
     - สร้าง Project Angular (ver ล่าสุดตอนนี้ 20)
     ```
     ng new <project name>
     ```
     
-- <img src="https://github.com/devicons/devicon/blob/master/icons/dotnetcore/dotnetcore-original.svg" title="dotnetcore" alt="dotnetcore" width="20" height="20"/> &nbsp;
+- <img src="https://github.com/devicons/devicon/blob/master/icons/dotnetcore/dotnetcore-original.svg" title="dotnetcore" alt="dotnetcore" width="28" height="28"/> &nbsp;
     - สร้าง Project .NET แบบมี Controllers (ver 8)
     ```
     dotnet new webapi --use-controllers -o <project name>
