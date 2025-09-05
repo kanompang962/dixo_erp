@@ -23,8 +23,8 @@
 - [Deployment (Docker + Nginx + Ubuntu)](#-deployment-docker--nginx--ubuntu)
 - [Contributing](#-contributing)
 - [Roadmap](#-roadmap)
-- [New Project](#-new--project)
-- [Install Project](#-install--project)
+- [New Project](#-new-project)
+- [Install Project](#-install-project)
 - [License](#-license)
 
 ---
@@ -64,25 +64,21 @@
 - [RootProject]
     - **Install Husky v9** 
     - ไปที่ root ของ repo (โฟลเดอร์รวม Angular + .NET)
-
     ```
-    cd my-erp-app
+    cd dixo_erp
     ```
 
     - สร้าง package.json (ถ้าไม่มี)
-
     ```
     npm init -y 
     ```
 
     - ติดตั้ง dependencies
-
     ```
     npm install --save-dev husky commitlint @commitlint/config-conventional commitizen cz-conventional-changelog
     ``` 
 
     - สร้างไฟล์ commitlint.config.js ที่ root:
-
     ```
     module.exports = {
         extends: ['@commitlint/config-conventional']
@@ -90,7 +86,6 @@
     ```
 
     - เพิ่ม config ใน package.json:
-
     ```
     "config": {
         "commitizen": {
@@ -100,13 +95,11 @@
     ```
 
     - ปิดใช้งาน Husky (คำสั่งนี้จะสร้างโฟลเดอร์ .husky/ และเพิ่ม script "prepare": "husky" ให้อัตโนมัติใน package.json)
-
     ```
     npx husky init
     ```
 
     - สร้างไฟล์ .husky/commit-msg
-
     ```
     #!/bin/sh
     . "$(dirname "$0")/_/husky.sh"
@@ -115,19 +108,16 @@
     ```
 
     - แล้วให้สิทธิ์รัน:
-
     ```
     chmod +x .husky/commit-msg
     ```
 
     - วิธีใช้งาน Commitizen
-
     ```
     npx cz
     ```
 
     - หรือเพิ่ม script ใน package.json:
-
     ```
     "scripts": {
         "commit": "cz",
@@ -136,7 +126,6 @@
     ```
 
     - จากนั้นรัน: 
-
     ```
     npm run commit
     ```
